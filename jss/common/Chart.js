@@ -34,6 +34,7 @@ class Chart extends Component {
              {
                  name: '完成度',
                  type: 'pie',
+                 hoverAnimation:false,
                  radius: ['80%', '100%'],
                  avoidLabelOverlap: false,
                  left: 0,

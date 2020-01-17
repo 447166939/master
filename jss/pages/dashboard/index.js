@@ -4,8 +4,9 @@ import Chart from '../../common/Chart';
 import Chart1 from '../../common/Chart1';
 import TopChart from '../../common/TopChart';
 import FunnelChart from '../../common/FunnelChart';
+import AchievementTable from '../../common/AchievementTable';
 import {getPixel} from '../../common/util';
-import {top} from '../../data/dashboard';
+import {top,funnelData} from '../../data/dashboard';
 
 export default class Dashboard extends Component {
   
@@ -19,7 +20,8 @@ export default class Dashboard extends Component {
       <Chart title="认购业绩" numOfCompleted={8} numOfTarget={10} />
       <Chart1 title="正签业绩" numOfCompleted={8} numOfTarget={10} total={40000}/>
       <TopChart data={top} title="正签业绩排名"/>
-      <FunnelChart />
+      <FunnelChart data={funnelData} title="销售漏斗"/>
+      <AchievementTable title="正签业绩回顾" />
       </View>
       </ScrollView>      
     )

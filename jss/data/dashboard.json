@@ -5,11 +5,18 @@
         {"name":"周小猫","amount":55000,"quantity":8},
         {"name":"鲁西西","amount":60000,"quantity":3},
         {"name":"郭涛","amount":65000,"quantity":3},
-        {"name":"张大卫","amount":70000,"quantity":6},
+        {"name":"张大卫","amount":70000,"quantity":9},
         {"name":"周宁","amount":75000,"quantity":5},
         {"name":"王明明","amount":80000,"quantity":4},
         {"name":"黄晓明","amount":85000,"quantity":8},
         {"name":"王明阳","amount":90000,"quantity":9}
         
+    ],
+    "funnelData":[
+        {"value": 150, "name": "认购"},
+        {"value": 500, "name": "报备"},
+        {"value": 350, "name": "到访"},
+        {"value": 350, "name": "多次到访"},
+        {"value": 120, "name": "退款"}
     ]
 }
