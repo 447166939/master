@@ -1,4 +1,9 @@
 {
+    
+        "visitInfo":{"numOftarget":15,"numOfCompleted":12},
+        "buyInfo":{"numOftarget":10,"numOfCompleted":8},
+        "info":{"numOftarget":10,"numOfCompleted":8,"total":40000},
+    
     "top": [
         {"name":"李小刚","amount":45000,"quantity":3},
         {"name":"王小红","amount":50000,"quantity":3},
@@ -21,9 +26,9 @@
     ],
     "achievementData": [
         {"date":"2019-01","quantity": 6,"percent":"120.15%"},
-        {"date":"2019-01","quantity": 6,"percent":"120.15%"},
-        {"date":"2019-01","quantity": 6,"percent":"120.15%"},
-        {"date":"2019-01","quantity": 6,"percent":"120.15%"},
+        {"date":"2019-01","quantity": 6,"percent":"126.15%"},
+        {"date":"2019-01","quantity": 6,"percent":"125.25%"},
+        {"date":"2019-01","quantity": 6,"percent":"121.15%"},
         {"date":"2019-01","quantity": 6,"percent":"120.15%"},
         {"date":"2019-01","quantity": 6,"percent":"120.15%"}
     ]

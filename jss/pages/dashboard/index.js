@@ -6,19 +6,19 @@ import TopChart from './TopChart';
 import FunnelChart from './FunnelChart';
 import AchievementTable from './AchievementTable';
 import {getPixel} from '../../common/util';
-import {top,funnelData,achievementData} from '../../data/dashboard';
+import {top,funnelData,achievementData,visitInfo,buyInfo,info} from '../../data/dashboard';
+
 
 export default class Dashboard extends Component {
   
   
-  render() {
-   
+  render() {   
     return (
       <ScrollView>
       <View style={styles.container}>
-      <Chart title="到访业绩" numOfCompleted={12} numOfTarget={15}/>
-      <Chart title="认购业绩" numOfCompleted={8} numOfTarget={10} />
-      <Chart1 title="正签业绩" numOfCompleted={8} numOfTarget={10} total={40000}/>
+      <Chart title="到访业绩" numOfCompleted={visitInfo.numOfCompleted} numOfTarget={visitInfo.numOfTarget}/>
+      <Chart title="认购业绩" numOfCompleted={buyInfo.numOfCompleted} numOfTarget={buyInfo.numOfTarget} />
+      <Chart1 title="正签业绩" numOfCompleted={info.numOfCompleted} numOfTarget={info.numOfTarget} total={info.total}/>
       <TopChart data={top} title="正签业绩排名"/>
       <FunnelChart data={funnelData} title="销售漏斗"/>
       <AchievementTable title="正签业绩回顾" data={achievementData} />

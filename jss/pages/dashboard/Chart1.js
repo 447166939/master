@@ -60,7 +60,7 @@ class Chart1 extends Component {
                     <View style={styles.rightContent}>
                         <View style={{ marginLeft: getPixel(30), justifyContent: 'center', alignItems: 'center' }}><Text style={{ fontSize: getPixel(14), color: '#666666', fontWeight: 'lighter' }}>完成金额</Text><Text style={{ fontSize: getPixel(24), color: '#000a22', fontWeight: 'bold' }}>{`￥${money(total,2)}`}</Text></View>
                         <View style={{ marginLeft: getPixel(30), flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center' }}>
-                            <View style={{ alignItems: 'center' }}><Text style={{ fontSize: 14, color: '#666666', fontWeight: 'lighter' }}>完成数量</Text><Text style={{ fontSize: getPixel(24), color: '#000a22', fontWeight: 'bold' }}>8</Text></View><View style={{ alignItems: 'center',marginLeft:getPixel(30) }}><Text style={{ fontSize: getPixel(14), color: '#666666', fontWeight: 'lighter' }}>目标数量</Text><Text style={{ fontSize: getPixel(24), color: '#000a22', fontWeight: 'bold' }}>10</Text></View>
+                            <View style={{ alignItems: 'center' }}><Text style={{ fontSize: 14, color: '#666666', fontWeight: 'lighter' }}>完成数量</Text><Text style={{ fontSize: getPixel(24), color: '#000a22', fontWeight: 'bold' }}>{numOfCompleted}</Text></View><View style={{ alignItems: 'center',marginLeft:getPixel(30) }}><Text style={{ fontSize: getPixel(14), color: '#666666', fontWeight: 'lighter' }}>目标数量</Text><Text style={{ fontSize: getPixel(24), color: '#000a22', fontWeight: 'bold' }}>{numOfTarget}</Text></View>
                         </View>
                     </View>
                 </View>

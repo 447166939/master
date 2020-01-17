@@ -1,0 +1,10 @@
+{
+    "achievementData":[    
+        {"date":"2019-12","target":480000,"achievement":960000},
+        {"date":"2019-11","target":660000,"achievement":1390000},
+        {"date":"2019-10","target":1030000,"achievement":1830000},
+        {"date":"2019-09","target":1420000,"achievement":2330000},
+        {"date":"2019-08","target":1660000,"achievement":2650000},
+        {"date":"2019-07","target":1700000,"achievement":2520000}       
+    ]
+}
