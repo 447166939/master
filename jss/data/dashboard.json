@@ -18,5 +18,13 @@
         {"value": 350, "name": "到访"},
         {"value": 350, "name": "多次到访"},
         {"value": 120, "name": "退款"}
+    ],
+    "achievementData": [
+        {"date":"2019-01","quantity": 6,"percent":"120.15%"},
+        {"date":"2019-01","quantity": 6,"percent":"120.15%"},
+        {"date":"2019-01","quantity": 6,"percent":"120.15%"},
+        {"date":"2019-01","quantity": 6,"percent":"120.15%"},
+        {"date":"2019-01","quantity": 6,"percent":"120.15%"},
+        {"date":"2019-01","quantity": 6,"percent":"120.15%"}
     ]
 }

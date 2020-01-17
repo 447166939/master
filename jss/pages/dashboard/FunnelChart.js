@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import {StyleSheet,View,Text,Image} from 'react-native';
 import {Echarts} from 'react-native-secharts';
-import {getPixel} from './util';
+import {getPixel} from '../../common/util';
 
 class FunnelChart extends Component {
     render(){
@@ -98,7 +98,7 @@ class FunnelChart extends Component {
             <View style={styles.container}>
             <View style={styles.title}>
                     <Text style={styles.text}>{title}</Text>
-                    <View style={{ flexDirection: 'row', alignItems: 'center' }}><Text style={styles.subtext}>详情</Text><Image style={{ width: getPixel(6), height: getPixel(12), marginLeft: getPixel(5) }} source={require('../static/right.png')} /></View>
+                    <View style={{ flexDirection: 'row', alignItems: 'center' }}><Text style={styles.subtext}>详情</Text><Image style={{ width: getPixel(6), height: getPixel(12), marginLeft: getPixel(5) }} source={require('../../static/right.png')} /></View>
             </View>
             <Echarts option={option} width={getPixel(355)} height={getPixel(274)} />           
             </View>

@@ -2,7 +2,7 @@
 import React,{Component} from 'react';
 import {StyleSheet,View,Text,Image} from 'react-native';
 import {Echarts} from 'react-native-secharts';
-import {getPixel,money} from './util';
+import {getPixel,money} from '../../common/util';
 
 
 
@@ -140,7 +140,7 @@ class TopChart extends Component {
         return (
             <View style={styles.container}>
             <View style={styles.title}>
-                    <Text style={styles.text}>{title}</Text><View style={{ flexDirection: 'row', alignItems: 'center' }}><Text style={styles.subtext}>详情</Text><Image style={{ width: getPixel(6), height: getPixel(12), marginLeft: getPixel(5) }} source={require('../static/right.png')} /></View>
+                    <Text style={styles.text}>{title}</Text><View style={{ flexDirection: 'row', alignItems: 'center' }}><Text style={styles.subtext}>详情</Text><Image style={{ width: getPixel(6), height: getPixel(12), marginLeft: getPixel(5) }} source={require('../../static/right.png')} /></View>
                 </View>
             <Echarts option={option} width={getPixel(355)} height={getPixel(640)} />
             </View>

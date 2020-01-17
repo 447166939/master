@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { StyleSheet,Text, ScrollView,Image,View } from 'react-native';
-import Chart from '../../common/Chart';
-import Chart1 from '../../common/Chart1';
-import TopChart from '../../common/TopChart';
-import FunnelChart from '../../common/FunnelChart';
-import AchievementTable from '../../common/AchievementTable';
+import Chart from './Chart';
+import Chart1 from './Chart1';
+import TopChart from './TopChart';
+import FunnelChart from './FunnelChart';
+import AchievementTable from './AchievementTable';
 import {getPixel} from '../../common/util';
-import {top,funnelData} from '../../data/dashboard';
+import {top,funnelData,achievementData} from '../../data/dashboard';
 
 export default class Dashboard extends Component {
   
@@ -21,7 +21,7 @@ export default class Dashboard extends Component {
       <Chart1 title="正签业绩" numOfCompleted={8} numOfTarget={10} total={40000}/>
       <TopChart data={top} title="正签业绩排名"/>
       <FunnelChart data={funnelData} title="销售漏斗"/>
-      <AchievementTable title="正签业绩回顾" />
+      <AchievementTable title="正签业绩回顾" data={achievementData} />
       </View>
       </ScrollView>      
     )

@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import {StyleSheet,View,Text,Image} from 'react-native';
 import {Echarts} from 'react-native-secharts';
-import {getPixel} from './util';
+import {getPixel} from '../../common/util';
 
 
 
@@ -51,7 +51,7 @@ class Chart extends Component {
         return (
             <View style={styles.container}>
                 <View style={styles.title}>
-                    <Text style={styles.text}>{title}</Text><View style={{ flexDirection: 'row', alignItems: 'center' }}><Text style={styles.subtext}>详情</Text><Image style={{ width: getPixel(6), height: getPixel(12), marginLeft: getPixel(5) }} source={require('../static/right.png')} /></View>
+                    <Text style={styles.text}>{title}</Text><View style={{ flexDirection: 'row', alignItems: 'center' }}><Text style={styles.subtext}>详情</Text><Image style={{ width: getPixel(6), height: getPixel(12), marginLeft: getPixel(5) }} source={require('../../static/right.png')} /></View>
                 </View>
                 <View style={styles.content}>
                     <View style={styles.echartWrapper}>
