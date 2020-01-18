@@ -61,7 +61,7 @@ class Chart extends Component {
                     <View style={{marginLeft:getPixel(30),width:getPixel(60),justifyContent:'center',alignItems:'center'}}>
                     <Text style={{fontSize:14,color:'#666666',fontWeight:'100'}}>完成数量</Text>
                     <Text style={{fontSize:24,fontWeight:'bold',color:'#000a22'}}>{numOfCompleted}</Text>
-                    <Text style={{color:'#666666',fontWeight:'lighter'}}>目标数量</Text>
+                    <Text style={{color:'#666666',fontWeight:'100'}}>目标数量</Text>
                     <Text style={{fontSize:24,fontWeight:'bold',color:'#000a22'}}>{numOfTarget}</Text>
                     </View>
                     </View>

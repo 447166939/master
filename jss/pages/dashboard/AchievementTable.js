@@ -37,6 +37,7 @@ class AchievementTable extends Component {
                 </View>
                 <View style={{marginHorizontal:getPixel(15)}}>
                 <FlatList 
+                keyExtractor={(item,index)=>('#'+index)}
                 data={data}
                 renderItem={this.renderItem}
                 ItemSeparatorComponent={this.seperatorComponent}

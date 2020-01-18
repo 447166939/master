@@ -61,6 +61,7 @@ class AchievementDetail extends Component {
                     <View style={styles.downTable}>
                         <View style={styles.fixedTable}>
                             <FlatList
+                            keyExtractor={(item,index)=>('#'+index)}
                             data={date}
                             renderItem={this.renderDateItem}
                             ListHeaderComponent={this.headerComponent}
@@ -69,6 +70,7 @@ class AchievementDetail extends Component {
                         </View>
                         <ScrollView style={styles.scrollTable} horizontal={true}>
                         <FlatList
+                        keyExtractor={(item,index)=>('#'+index)}
                         data={scrollTableData}
                         numColumns={5}
                         ListHeaderComponent={this.scrollHeaderComponent}
