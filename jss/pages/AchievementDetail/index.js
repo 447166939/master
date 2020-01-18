@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import {View,StyleSheet,Image,Text,ScrollView,FlatList} from 'react-native';
 import Bar from './Bar';
-import {getPixel} from '../../common/util';
+import {getPixel,money} from '../../common/util';
 import {achievementData,achievementList} from '../../data/achievementDetail.json';
 
 class AchievementDetail extends Component {
@@ -22,17 +22,17 @@ class AchievementDetail extends Component {
     }
     renderScrollTable=({item})=>{
         return (
-            <View style={{width:getPixel(100),height:getPixel(40),justifyContent:'center',alignItems:'center',backgroundColor:'#ffffff',}}><Text style={{fontSize:14,fontWeight:'100',color:'#666666'}}>{item}</Text></View>
+            <View style={{width:getPixel(110),height:getPixel(40),justifyContent:'center',alignItems:'center',backgroundColor:'#ffffff',}}><Text style={{fontSize:14,fontWeight:'100',color:'#666666'}}>{item}</Text></View>
              )
     }
     scrollHeaderComponent=()=>{
         return (
             <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',height:getPixel(40),backgroundColor:'#f1f1f1'}}>
-            <View style={{width:getPixel(100),height:getPixel(40),justifyContent:'center',alignItems:'center',}}><Text style={{fontSize:14,color:'#333333',fontWeight:'bold'}}>目标金额</Text></View>
-            <View style={{width:getPixel(100),height:getPixel(40),justifyContent:'center',alignItems:'center',}}><Text style={{fontSize:14,color:'#333333',fontWeight:'bold',}}>成交金额</Text></View>
-            <View style={{width:getPixel(100),height:getPixel(40),justifyContent:'center',alignItems:'center',}}><Text style={{fontSize:14,color:'#333333',fontWeight:'bold'}}>成交订单</Text></View>
-            <View style={{width:getPixel(100),height:getPixel(40),justifyContent:'center',alignItems:'center',}}><Text style={{fontSize:14,color:'#333333',fontWeight:'bold'}}>完成率</Text></View>
-            <View style={{width:getPixel(100),height:getPixel(40),justifyContent:'center',alignItems:'center',}}><Text style={{fontSize:14,color:'#333333',fontWeight:'bold'}}>平均客单价</Text></View>
+            <View style={{width:getPixel(110),height:getPixel(40),justifyContent:'center',alignItems:'center',}}><Text style={{fontSize:14,color:'#333333',fontWeight:'bold'}}>目标金额</Text></View>
+            <View style={{width:getPixel(110),height:getPixel(40),justifyContent:'center',alignItems:'center',}}><Text style={{fontSize:14,color:'#333333',fontWeight:'bold',}}>成交金额</Text></View>
+            <View style={{width:getPixel(110),height:getPixel(40),justifyContent:'center',alignItems:'center',}}><Text style={{fontSize:14,color:'#333333',fontWeight:'bold'}}>成交订单</Text></View>
+            <View style={{width:getPixel(110),height:getPixel(40),justifyContent:'center',alignItems:'center',}}><Text style={{fontSize:14,color:'#333333',fontWeight:'bold'}}>完成率</Text></View>
+            <View style={{width:getPixel(110),height:getPixel(40),justifyContent:'center',alignItems:'center',}}><Text style={{fontSize:14,color:'#333333',fontWeight:'bold'}}>平均客单价</Text></View>
             </View>
         )
     }
@@ -41,7 +41,7 @@ class AchievementDetail extends Component {
         const target=achievementList.reduce(function(s,i){return (s+Number(i.target))},0);
         const percent=Number(Number(amount)/Number(target)*100).toFixed(2);
         const date=achievementList.map(item=>item.date)
-        const scrollData=achievementList.map(item=>[item.target,item.amount,item.number,item.percent,item.average]);
+        const scrollData=achievementList.map(item=>[`￥${money(item.target)}`,`￥${money(item.amount)}`,item.number,item.percent,`￥${money(item.average)}`]);
         const scrollTableData=scrollData.reduce(function(s,i){return (s.concat(i))},[])
         return (
             <ScrollView>
@@ -49,10 +49,10 @@ class AchievementDetail extends Component {
                 <Bar data={achievementData} />
                 <View style={styles.middleTable}>
                     <View style={styles.col}>
-                        <Text style={{color:'#666666',fontWeight:'100',fontSize:14,marginBottom:getPixel(5)}}>目标金额</Text><Text style={{color:'#333333',fontSize:16,fontWeight:'bold',marginTop:getPixel(5)}}>{target}</Text>
+                        <Text style={{color:'#666666',fontWeight:'100',fontSize:14,marginBottom:getPixel(5)}}>目标金额</Text><Text style={{color:'#333333',fontSize:16,fontWeight:'bold',marginTop:getPixel(5)}}>{`￥${money(target,2)}`}</Text>
                     </View>
                     <View style={styles.col}>
-                        <Text style={{color:'#666666',fontWeight:'100',fontSize:14,marginBottom:getPixel(5)}}>成交金额</Text><Text style={{color:'#333333',fontSize:16,fontWeight:'bold',marginTop:getPixel(5)}}>{amount}</Text>
+                        <Text style={{color:'#666666',fontWeight:'100',fontSize:14,marginBottom:getPixel(5)}}>成交金额</Text><Text style={{color:'#333333',fontSize:16,fontWeight:'bold',marginTop:getPixel(5)}}>{`￥${money(amount)}`}</Text>
                     </View>
                     <View style={styles.col}>
                         <Text style={{color:'#666666',fontWeight:'100',fontSize:14,marginBottom:getPixel(5)}}>完成率</Text><Text style={{color:'#333333',fontSize:16,fontWeight:'bold',marginTop:getPixel(5)}}>{`${percent}%`}</Text>
