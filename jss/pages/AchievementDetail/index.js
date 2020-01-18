@@ -1,8 +1,8 @@
 import React,{Component} from 'react';
-import {View,StyleSheet,Image,Text} from 'react-native';
+import {View,StyleSheet,Image,Text,ScrollView,FlatList} from 'react-native';
 import Bar from './Bar';
 import {getPixel} from '../../common/util';
-import {achievementData} from '../../data/achievementDetail.json';
+import {achievementData,achievementList} from '../../data/achievementDetail.json';
 
 class AchievementDetail extends Component {
     static navigationOptions={
@@ -11,11 +11,75 @@ class AchievementDetail extends Component {
         title:'业绩目标完成度',
         headerTitleStyle: {flex:1,textAlign:'center'}
     }
-    render(){
+    renderDateItem = ({item})=>{
+        return <View style={{width:getPixel(100),justifyContent:'center',alignItems:'center',height:getPixel(40),borderWidth:1}}><Text>{item}</Text></View>
+    }
+    separatorComponent=()=>{
+        return <View style={{height:1,width:'100%',backgroundColor:'#e5e5ea'}}></View>
+    }
+    headerComponent=()=>{
+        return <View style={{height:getPixel(40),justifyContent:'center',alignItems:'center',borderWidth:1}}><Text>时间</Text></View>
+    }
+    renderScrollTable=({item})=>{
         return (
-            <View style={styles.container}>
-            <Bar data={achievementData} />
+            <View style={{width:getPixel(100),height:getPixel(40),justifyContent:'center',alignItems:'center',borderWidth:1}}><Text>{item}</Text></View>
+             )
+    }
+    scrollHeaderComponent=()=>{
+        return (
+            <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',height:getPixel(40)}}>
+            <View style={{width:getPixel(100),height:getPixel(40),justifyContent:'center',alignItems:'center',borderWidth:1}}><Text>目标金额</Text></View>
+            <View style={{width:getPixel(100),height:getPixel(40),justifyContent:'center',alignItems:'center',borderWidth:1}}><Text>成交金额</Text></View>
+            <View style={{width:getPixel(100),height:getPixel(40),justifyContent:'center',alignItems:'center',borderWidth:1}}><Text>成交订单</Text></View>
+            <View style={{width:getPixel(100),height:getPixel(40),justifyContent:'center',alignItems:'center',borderWidth:1}}><Text>完成率</Text></View>
+            <View style={{width:getPixel(100),height:getPixel(40),justifyContent:'center',alignItems:'center',borderWidth:1}}><Text>平均客单价</Text></View>
             </View>
+        )
+    }
+    render(){
+        const amount =achievementList.reduce(function(s,i){return (s+Number(i.amount))},0);
+        const target=achievementList.reduce(function(s,i){return (s+Number(i.target))},0);
+        const percent=Number(Number(amount)/Number(target)*100).toFixed(2);
+        const date=achievementList.map(item=>item.date)
+        const scrollData=achievementList.map(item=>[item.target,item.amount,item.number,item.percent,item.average]);
+        const scrollTableData=scrollData.reduce(function(s,i){return (s.concat(i))},[])
+        return (
+            <ScrollView>
+            <View style={styles.container}>
+                <Bar data={achievementData} />
+                <View style={styles.middleTable}>
+                    <View style={styles.col}>
+                        <Text style={{color:'#666666',fontWeight:'100',fontSize:14,marginBottom:getPixel(5)}}>目标金额</Text><Text style={{color:'#333333',fontSize:16,fontWeight:'bold',marginTop:getPixel(5)}}>{target}</Text>
+                    </View>
+                    <View style={styles.col}>
+                        <Text style={{color:'#666666',fontWeight:'100',fontSize:14,marginBottom:getPixel(5)}}>成交金额</Text><Text style={{color:'#333333',fontSize:16,fontWeight:'bold',marginTop:getPixel(5)}}>{amount}</Text>
+                    </View>
+                    <View style={styles.col}>
+                        <Text style={{color:'#666666',fontWeight:'100',fontSize:14,marginBottom:getPixel(5)}}>完成率</Text><Text style={{color:'#333333',fontSize:16,fontWeight:'bold',marginTop:getPixel(5)}}>{`${percent}%`}</Text>
+                    </View>
+                </View>
+                    <View style={styles.downTable}>
+                        <View style={styles.fixedTable}>
+                            <FlatList
+                            data={date}
+                            renderItem={this.renderDateItem}
+                            ListHeaderComponent={this.headerComponent}
+                            ItemSeparatorComponent={this.separatorComponent}
+                            />
+                        </View>
+                        <ScrollView style={styles.scrollTable} horizontal={true}>
+                        <FlatList
+                        data={scrollTableData}
+                        numColumns={5}
+                        ListHeaderComponent={this.scrollHeaderComponent}
+                        ItemSeparatorComponent={this.separatorComponent}
+                        renderItem={this.renderScrollTable}
+                        />
+                        </ScrollView>
+                    </View>
+
+            </View>
+            </ScrollView>
         )
     }
 }
@@ -25,4 +89,28 @@ const styles=StyleSheet.create({
         flex:1,
         alignItems:'center',
     },
+    middleTable:{
+        width:getPixel(355),
+        height:getPixel(100),
+        margin:getPixel(10),
+        flexDirection:'row',
+        alignItems:'center',
+    },
+    col: {
+        flex:1,
+        height:getPixel(100),
+        alignItems:'center',
+        justifyContent:'center',
+    },
+   downTable:{
+       marginLeft:getPixel(10),
+       flexDirection:'row',
+       alignSelf:'flex-start',
+   },
+   fixedTable:{
+       width:getPixel(100),
+       marginLeft:0,
+   },
+   scrollTable:{
+   }
 })
