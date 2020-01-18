@@ -120,11 +120,11 @@ const styles=StyleSheet.create({
         alignItems:'center',
     },
     text: {
-        fontSize:getPixel(16),
+        fontSize:16,
         color:'#333333',
     },
     subtext:{
-        fontSize:getPixel(14),
+        fontSize:14,
         color:'#666666'
     },
 })

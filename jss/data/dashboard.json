@@ -1,8 +1,8 @@
 {
     
-        "visitInfo":{"numOftarget":15,"numOfCompleted":12},
-        "buyInfo":{"numOftarget":10,"numOfCompleted":8},
-        "info":{"numOftarget":10,"numOfCompleted":8,"total":40000},
+        "visitInfo":{"numOfTarget":15,"numOfCompleted":12},
+        "buyInfo":{"numOfTarget":10,"numOfCompleted":8},
+        "info":{"numOfTarget":10,"numOfCompleted":8,"total":40000},
     
     "top": [
         {"name":"李小刚","amount":45000,"quantity":3},

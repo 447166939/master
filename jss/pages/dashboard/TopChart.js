@@ -35,7 +35,7 @@ class TopChart extends Component {
                     inside: true,
                     textStyle: {
                         color: '#ffffff',
-                        fontSize: getPixel(16),
+                        fontSize: 16,
                         fontWeight: 'bold',
                     }
                 },
@@ -69,7 +69,7 @@ class TopChart extends Component {
                         position: [200, -15],
                         textStyle: {
                             color: '#333333',
-                            fontSize: getPixel(16),
+                            fontSize: 16,
                             fontWeight: 'bold',
                         }
                     },
@@ -124,8 +124,8 @@ class TopChart extends Component {
                         formatter:"{c}单",
                         textStyle: {
                             color: '#333333',
-                            fontSize: getPixel(14),
-                            fontWeight: 'lighter',
+                            fontSize: 14,
+                            fontWeight: '100',
                         }
                     },
                 },
@@ -161,11 +161,11 @@ const styles=StyleSheet.create({
         alignItems:'center',
     },
     text: {
-        fontSize:getPixel(16),
+        fontSize:16,
         color:'#333333',
     },
     subtext:{
-        fontSize:getPixel(14),
+        fontSize:14,
         color:'#666666'
     },
 })

@@ -5,24 +5,24 @@ import {getPixel} from '../../common/util';
 class AchievementTable extends Component {
     renderItem=({item})=>{
         return (
-            <View style={{ flexDirection: 'row' }}>
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}><Text style={{marginVertical:getPixel(13),color:'#666666',fontSize:getPixel(14)}}>{item.date}</Text></View>
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}><Text style={{marginVertical:getPixel(13),color:'#666666',fontSize:getPixel(14)}}>{item.quantity}</Text></View>
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}><Text style={{marginVertical:getPixel(13),color:'#666666',fontSize:getPixel(14)}}>{item.percent}</Text></View>
+            <View style={{ flexDirection: 'row' ,backgroundColor:'#ffffff'}}>
+                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}><Text style={{marginVertical:getPixel(13),color:'#666666',fontSize:14}}>{item.date}</Text></View>
+                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}><Text style={{marginVertical:getPixel(13),color:'#666666',fontSize:14}}>{item.quantity}</Text></View>
+                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}><Text style={{marginVertical:getPixel(13),color:'#666666',fontSize:14}}>{item.percent}</Text></View>
             </View >
         )
     }
     seperatorComponent=()=>{
         return (
-            <View style={{width:'100%',height:getPixel(1),backgroundColor:'#f1f1f1'}}></View>
+            <View style={{width:'100%',borderWidth:getPixel(0.5),borderColor:'#e5e5ea'}}></View>
         )
     }
     headerComponent=()=>{
         return (
             <View style={{ flexDirection: 'row',backgroundColor:'#f1f1f1'}}>
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}><Text style={{marginVertical:getPixel(13),fontSize:getPixel(14),color:'#333333'}}>时间</Text></View>
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}><Text style={{marginVertical:getPixel(13),fontSize:getPixel(14),color:'#333333'}}>正签单量</Text></View>
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}><Text style={{marginVertical:getPixel(13),fontSize:getPixel(14),color:'#333333'}}>业绩达成率</Text></View>
+                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}><Text style={{marginVertical:getPixel(13),fontSize:14,color:'#333333'}}>时间</Text></View>
+                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}><Text style={{marginVertical:getPixel(13),fontSize:14,color:'#333333'}}>正签单量</Text></View>
+                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}><Text style={{marginVertical:getPixel(13),fontSize:14,color:'#333333'}}>业绩达成率</Text></View>
             </View >
         )
     }
@@ -60,11 +60,11 @@ const styles=StyleSheet.create({
         alignItems:'center',
     },
     text: {
-        fontSize:getPixel(16),
+        fontSize:16,
         color:'#333333',
     },
     subtext:{
-        fontSize:getPixel(14),
+        fontSize:14,
         color:'#666666'
     },
 })
