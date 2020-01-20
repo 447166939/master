@@ -1,16 +1,23 @@
 import React,{Component} from 'react';
-import {View,StyleSheet,Image,Text,ScrollView,FlatList} from 'react-native';
+import {View,StyleSheet,Image,Text,ScrollView,FlatList,TouchableOpacity} from 'react-native';
 import Bar from './Bar';
 import {getPixel,money} from '../../common/util';
-import {achievementData,achievementList} from '../../data/achievementDetail.json';
+import {observer } from 'mobx-react';
+import appState from '../../store/dashboard'
 
+@observer
 class AchievementDetail extends Component {
-    static navigationOptions={
+    static navigationOptions=({navigation})=>{ 
+    return {
         headerLeft:<Image style={{width:getPixel(10),height:getPixel(20),marginLeft:getPixel(10)}} source={require('../../static/back.png')}></Image>,
-        headerRight:<View><Text style={{fontSize:16,color:'#5788ff',marginRight:getPixel(20)}}>筛选</Text></View>,
+        headerRight:<TouchableOpacity activeOpacity={0.1} onPress={()=>navigation.navigate('SelectData')}><View><Text style={{fontSize:16,color:'#5788ff',marginRight:getPixel(20)}}>筛选</Text></View></TouchableOpacity>,
         title:'业绩目标完成度',
         headerTitleStyle: {flex:1,textAlign:'center'}
     }
+}
+componentDidMount(){
+    appState.fetchAchieveData('https://facebook.github.io/react-native/movies.json')
+}
     renderDateItem = ({item})=>{
         return <View style={{width:getPixel(100),justifyContent:'center',alignItems:'center',height:getPixel(40),backgroundColor:'#ffffff',}}><Text style={{fontSize:14,fontWeight:'100',color:'#666666'}}>{item}</Text></View>
     }
@@ -37,6 +44,7 @@ class AchievementDetail extends Component {
         )
     }
     render(){
+        const {achievementData=[],achievementList=[]}=appState.achieveData;
         const amount =achievementList.reduce(function(s,i){return (s+Number(i.amount))},0);
         const target=achievementList.reduce(function(s,i){return (s+Number(i.target))},0);
         const percent=Number(Number(amount)/Number(target)*100).toFixed(2);

@@ -1,0 +1,63 @@
+{
+  "data": "2019年12月31日",
+  "dataTime": [
+    { "time": 29, "stattus": 0 },
+    {
+      "time": 30,
+      "stattus": 1
+    },
+    {
+      "time": 31,
+      "stattus": 1,
+      "status": 1
+    },
+    {
+      "time": 1,
+      "stattus": 0
+    },
+    {
+      "time": 2,
+      "stattus": 0
+    },
+    {
+      "time": 3,
+      "stattus": 0
+    },
+    {
+      "time": 4,
+      "stattus": 0
+    }
+  ],
+  "list": [
+    {
+      "time": "11:00-12:00",
+      "title": "与客户沟通报价事宜",
+      "status": 1
+    },
+    {
+      "time": "11:00-12:00",
+      "title": "与客户沟通报价事宜",
+      "status": 2
+    },
+    {
+      "time": "11:00-12:00",
+      "title": "与客户沟通报价事宜",
+      "status": 3
+    },
+    {
+      "time": "11:00-12:00",
+      "title": "与客户沟通报价事宜",
+      "status": 4
+    },
+    {
+      "time": "11:00-12:00",
+      "title": "与客户沟通报价事宜",
+      "status": 5
+    },
+    {
+      "time": "11:00-12:00",
+      "title": "与客户沟通报价事宜",
+      "status": 6
+    }
+  ]
+}
