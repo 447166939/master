@@ -4,6 +4,8 @@ import TitleComponent from './TitleComponent';
 import {observer } from 'mobx-react';
 import appState from '../../store/dashboard'
 import {getPixel} from '../../common/util';
+import SortDepartment from './SortDepartment';
+import SortPerson from './SortPerson';
 @observer
 class RankingList extends Component {
     static navigationOptions = ({navigation}) => {
@@ -16,15 +18,15 @@ class RankingList extends Component {
         };
     }
     componentDidMount(){
-        
+        appState.fetchRankingListData('https://facebook.github.io/react-native/movies.json')        
     }
     render(){
         const {selectedIndex}=appState;
-        return (
-            <View>                
-                <Text>{selectedIndex}</Text>              
-            </View>
-        )
+        if(selectedIndex==0){
+            return <SortPerson />
+        } else if(selectedIndex==1){
+            return <SortDepartment />
+        }
     }
 }
 export default RankingList;

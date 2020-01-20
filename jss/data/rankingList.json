@@ -1,0 +1,107 @@
+{
+    "_comment": "个人排名/部门排名页面数据",
+    "sortPersonal": [
+        {
+            "order": 1,
+            "name": "李小刚",
+            "department": "销售一部",
+            "target": 170000,
+            "amount": 252000,
+            "completeRate": "120%",
+            "amountRate": "10%"
+        },
+        {
+            "order": 2,
+            "name": "王小红",
+            "department": "销售一部",
+            "target": 1660000,
+            "amount": 2650000,
+            "completeRate": "120%",
+            "amountRate": "10%"
+        },
+        {
+            "order": 3,
+            "name": "周小明",
+            "department": "销售一部",
+            "target": 1420000,
+            "amount": 2330000,
+            "completeRate": "120%",
+            "amountRate": "10%"
+        },
+        {
+            "order": 4,
+            "name": "张小刚",
+            "department": "销售一部",
+            "target": 1190000,
+            "amount": 1840000,
+            "completeRate": "120%",
+            "amountRate": "10%"
+        },
+        {
+            "order": 5,
+            "name": "赵小刚",
+            "department": "销售一部",
+            "target": 1000000,
+            "amount": 1200000,
+            "completeRate": "120%",
+            "amountRate": "10%"
+        },
+        {
+            "order": 6,
+            "name": "赵小刚",
+            "department": "销售一部",
+            "target": 1000000,
+            "amount": 1200000,
+            "completeRate": "120%",
+            "amountRate": "10%"
+        },
+        {
+            "order": 7,
+            "name": "赵小刚",
+            "department": "销售一部",
+            "target": 1000000,
+            "amount": 1200000,
+            "completeRate": "120%",
+            "amountRate": "10%"
+        },
+        {
+            "order": 8,
+            "name": "赵小刚",
+            "department": "销售一部",
+            "target": 1000000,
+            "amount": 1200000,
+            "completeRate": "120%",
+            "amountRate": "10%"
+        },
+        {
+            "order": 9,
+            "name": "赵小刚",
+            "department": "销售一部",
+            "target": 1000000,
+            "amount": 1200000,
+            "completeRate": "120%",
+            "amountRate": "10%"
+        },
+        {
+            "order": 10,
+            "name": "赵小刚",
+            "department": "销售一部",
+            "target": 1000000,
+            "amount": 1200000,
+            "completeRate": "120%",
+            "amountRate": "10%"
+        }
+    ],
+    "sortDepartment": [
+        {"order":1,"department":"部门A","target":1000000,"amount":1200000,"completeRate":"120%","amountRate":"10%"},
+        {"order":2,"department":"部门B","target":1000000,"amount":1200000,"completeRate":"120%","amountRate":"10%"},
+        {"order":3,"department":"部门A","target":1000000,"amount":1200000,"completeRate":"120%","amountRate":"10%"},
+        {"order":4,"department":"部门A","target":1000000,"amount":1200000,"completeRate":"120%","amountRate":"10%"},
+        {"order":5,"department":"部门A","target":1000000,"amount":1200000,"completeRate":"120%","amountRate":"10%"},
+        {"order":6,"department":"部门A","target":1000000,"amount":1200000,"completeRate":"120%","amountRate":"10%"},
+        {"order":7,"department":"部门A","target":1000000,"amount":1200000,"completeRate":"120%","amountRate":"10%"},
+        {"order":8,"department":"部门A","target":1000000,"amount":1200000,"completeRate":"120%","amountRate":"10%"},
+        {"order":9,"department":"部门A","target":1000000,"amount":1200000,"completeRate":"120%","amountRate":"10%"},
+        {"order":10,"department":"部门A","target":1000000,"amount":1200000,"completeRate":"120%","amountRate":"10%"}
+    ]
+}
