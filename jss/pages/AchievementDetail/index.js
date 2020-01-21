@@ -10,7 +10,7 @@ class AchievementDetail extends Component {
     static navigationOptions=({navigation})=>{ 
     return {
         headerLeft:<Image style={{width:getPixel(10),height:getPixel(20),marginLeft:getPixel(10)}} source={require('../../static/back.png')}></Image>,
-        headerRight:<TouchableOpacity activeOpacity={0.1} onPress={()=>navigation.navigate('SelectData')}><View><Text style={{fontSize:16,color:'#5788ff',marginRight:getPixel(20)}}>筛选</Text></View></TouchableOpacity>,
+        headerRight:<TouchableOpacity activeOpacity={0.1} onPress={()=>{}}><View><Text style={{fontSize:16,color:'#5788ff',marginRight:getPixel(20)}}>筛选</Text></View></TouchableOpacity>,
         title:'业绩目标完成度',
         headerTitleStyle: {flex:1,textAlign:'center'}
     }
@@ -51,44 +51,46 @@ componentDidMount(){
         const date=achievementList.map(item=>item.date)
         const scrollData=achievementList.map(item=>[`￥${money(item.target)}`,`￥${money(item.amount)}`,item.number,item.percent,`￥${money(item.average)}`]);
         const scrollTableData=scrollData.reduce(function(s,i){return (s.concat(i))},[])
+       
         return (
+            
+                
             <ScrollView>
-            <View style={styles.container}>
-                <Bar data={achievementData} />
-                <View style={styles.middleTable}>
-                    <View style={styles.col}>
-                        <Text style={{color:'#666666',fontWeight:'100',fontSize:14,marginBottom:getPixel(5)}}>目标金额</Text><Text style={{color:'#333333',fontSize:16,fontWeight:'bold',marginTop:getPixel(5)}}>{`￥${money(target,2)}`}</Text>
+                <View style={styles.container}>
+                    <Bar data={achievementData} />
+                    <View style={styles.middleTable}>
+                        <View style={styles.col}>
+                            <Text style={{ color: '#666666', fontWeight: '100', fontSize: 14, marginBottom: getPixel(5) }}>目标金额</Text><Text style={{ color: '#333333', fontSize: 16, fontWeight: 'bold', marginTop: getPixel(5) }}>{`￥${money(target, 2)}`}</Text>
+                        </View>
+                        <View style={styles.col}>
+                            <Text style={{ color: '#666666', fontWeight: '100', fontSize: 14, marginBottom: getPixel(5) }}>成交金额</Text><Text style={{ color: '#333333', fontSize: 16, fontWeight: 'bold', marginTop: getPixel(5) }}>{`￥${money(amount)}`}</Text>
+                        </View>
+                        <View style={styles.col}>
+                            <Text style={{ color: '#666666', fontWeight: '100', fontSize: 14, marginBottom: getPixel(5) }}>完成率</Text><Text style={{ color: '#333333', fontSize: 16, fontWeight: 'bold', marginTop: getPixel(5) }}>{`${percent}%`}</Text>
+                        </View>
                     </View>
-                    <View style={styles.col}>
-                        <Text style={{color:'#666666',fontWeight:'100',fontSize:14,marginBottom:getPixel(5)}}>成交金额</Text><Text style={{color:'#333333',fontSize:16,fontWeight:'bold',marginTop:getPixel(5)}}>{`￥${money(amount)}`}</Text>
-                    </View>
-                    <View style={styles.col}>
-                        <Text style={{color:'#666666',fontWeight:'100',fontSize:14,marginBottom:getPixel(5)}}>完成率</Text><Text style={{color:'#333333',fontSize:16,fontWeight:'bold',marginTop:getPixel(5)}}>{`${percent}%`}</Text>
-                    </View>
-                </View>
                     <View style={styles.downTable}>
                         <View style={styles.fixedTable}>
                             <FlatList
-                            keyExtractor={(item,index)=>('#'+index)}
-                            data={date}
-                            renderItem={this.renderDateItem}
-                            ListHeaderComponent={this.headerComponent}
-                            ItemSeparatorComponent={this.separatorComponent}
+                                keyExtractor={(item, index) => ('#' + index)}
+                                data={date}
+                                renderItem={this.renderDateItem}
+                                ListHeaderComponent={this.headerComponent}
+                                ItemSeparatorComponent={this.separatorComponent}
                             />
                         </View>
                         <ScrollView style={styles.scrollTable} horizontal={true}>
-                        <FlatList
-                        keyExtractor={(item,index)=>('#'+index)}
-                        data={scrollTableData}
-                        numColumns={5}
-                        ListHeaderComponent={this.scrollHeaderComponent}
-                        ItemSeparatorComponent={this.separatorComponent}
-                        renderItem={this.renderScrollTable}
-                        />
+                            <FlatList
+                                keyExtractor={(item, index) => ('#' + index)}
+                                data={scrollTableData}
+                                numColumns={5}
+                                ListHeaderComponent={this.scrollHeaderComponent}
+                                ItemSeparatorComponent={this.separatorComponent}
+                                renderItem={this.renderScrollTable}
+                            />
                         </ScrollView>
                     </View>
-
-            </View>
+                </View>
             </ScrollView>
         )
     }

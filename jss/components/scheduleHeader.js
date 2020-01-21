@@ -57,7 +57,7 @@ export default class Header extends Component {
             left: 0,
             right: 0,
             botttom: 0,
-            backgroundColor: 'rgba(0,0,0,0.3)'
+            backgroundColor: 'rgb(0,0,0,0.3)'
           }}
         >
           <ScrollView style={{ paddingVertical: getPixel(10), backgroundColor: 'white', height: '100%' }}>

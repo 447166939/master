@@ -16,7 +16,6 @@ import { LocaleConfig } from 'react-native-calendars'
 import AddSchedule from './jss/pages/schedule/addSchedule'
 import AchievementDetail from './jss/pages/AchievementDetail'
 import RankingList from './jss/pages/RankingList'
-import SelectData from './jss/pages/SelectData';
 LocaleConfig.locales['fr'] = {
   monthNames: [
     '一月',
@@ -167,9 +166,6 @@ const ScheduleTotal = StackNavigator({
   RankingList: {
     screen: RankingList
   },
-  SelectData: {
-    screen: SelectData
-  }
 })
 // var image_icon = './jss/static/notselected2x.png'
 

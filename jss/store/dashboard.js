@@ -4,7 +4,7 @@ import dashboardData from '../data/dashboard';
 import rankingListData from '../data/rankingList'
 
 class AppState {
-  @observable selectedIndex=0; 
+  @observable selectedIndex=0;
   @observable achieveData= {"achievementData":[    
     {"date":null,"target":null,"achievement":null},      
 ],
