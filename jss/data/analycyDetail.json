@@ -1,0 +1,12 @@
+{
+    "_comment":"销售预测分析页面数据",
+    "data": [
+        {
+            "level": "初步洽谈",
+            "chanceNo": 1000,
+            "inversionRate":"10%",
+            "saleMoney": 1000000,
+            "probability":900000
+        }
+    ]
+}

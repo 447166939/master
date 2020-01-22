@@ -3,7 +3,7 @@ import {View,StyleSheet,Image,Text,ScrollView,FlatList,TouchableOpacity} from 'r
 import Bar from './Bar';
 import {getPixel,money} from '../../common/util';
 import {observer } from 'mobx-react';
-import appState from '../../store/dashboard'
+import appState from '../../store/dashboard';
 
 @observer
 class AchievementDetail extends Component {

@@ -24,9 +24,9 @@ export default class Dashboard extends Component {
       <View style={styles.container}>
       <Chart title="到访业绩" navigation={navigation} numOfCompleted={visitInfo.numOfCompleted} numOfTarget={visitInfo.numOfTarget}/>
       <Chart title="认购业绩" navigation={navigation} numOfCompleted={buyInfo.numOfCompleted} numOfTarget={buyInfo.numOfTarget} />
-      <Chart1 title="正签业绩" numOfCompleted={info.numOfCompleted} numOfTarget={info.numOfTarget} total={info.total}/>
+      <Chart1 title="正签业绩" navigation={navigation} numOfCompleted={info.numOfCompleted} numOfTarget={info.numOfTarget} total={info.total}/>
       <TopChart navigation={navigation} data={top} title="正签业绩排名"/>
-      <FunnelChart data={funnelData} title="销售漏斗"/>
+      <FunnelChart navigation={navigation} data={funnelData} title="销售漏斗"/>
       <AchievementTable title="正签业绩回顾" data={achievementData} />
       </View>
       </ScrollView>      
