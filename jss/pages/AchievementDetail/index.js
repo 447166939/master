@@ -4,13 +4,15 @@ import Bar from './Bar';
 import {getPixel,money} from '../../common/util';
 import {observer } from 'mobx-react';
 import appState from '../../store/dashboard';
+import {Drawer} from '@ant-design/react-native';
+import SelectData from '../../components/SelectData'
 
 @observer
 class AchievementDetail extends Component {
     static navigationOptions=({navigation})=>{ 
     return {
         headerLeft:<Image style={{width:getPixel(10),height:getPixel(20),marginLeft:getPixel(10)}} source={require('../../static/back.png')}></Image>,
-        headerRight:<TouchableOpacity activeOpacity={0.1} onPress={()=>{}}><View><Text style={{fontSize:16,color:'#5788ff',marginRight:getPixel(20)}}>筛选</Text></View></TouchableOpacity>,
+        headerRight:<TouchableOpacity activeOpacity={0.1} onPress={()=>{appState.drawer.openDrawer()}}><View><Text style={{fontSize:16,color:'#5788ff',marginRight:getPixel(20)}}>筛选</Text></View></TouchableOpacity>,
         title:'业绩目标完成度',
         headerTitleStyle: {flex:1,textAlign:'center'}
     }
@@ -54,7 +56,13 @@ componentDidMount(){
        
         return (
             
-                
+             <Drawer
+             sidebar={<SelectData />}
+             drawerRef={el=>appState.setDrawer(el)}
+             position="right"
+             drawerBackgroundColor="rgb(0,0,0,.5)"
+             drawerWidth={300}
+             >   
             <ScrollView>
                 <View style={styles.container}>
                     <Bar data={achievementData} />
@@ -92,6 +100,7 @@ componentDidMount(){
                     </View>
                 </View>
             </ScrollView>
+            </Drawer>
         )
     }
 }
