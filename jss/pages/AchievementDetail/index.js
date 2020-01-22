@@ -60,8 +60,8 @@ componentDidMount(){
              sidebar={<SelectData />}
              drawerRef={el=>appState.setDrawer(el)}
              position="right"
+             drawerWidth={200}
              drawerBackgroundColor="rgb(0,0,0,.5)"
-             drawerWidth={300}
              >   
             <ScrollView>
                 <View style={styles.container}>
