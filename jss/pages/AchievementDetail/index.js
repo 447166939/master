@@ -5,18 +5,17 @@ import {getPixel,money} from '../../common/util';
 import {observer } from 'mobx-react';
 import appState from '../../store/dashboard';
 import {Drawer} from '@ant-design/react-native';
-import SelectData from '../../components/SelectData'
+import SelectData from '../../components/SelectData';
+import Header from './Header';
 
 @observer
 class AchievementDetail extends Component {
     static navigationOptions=({navigation})=>{ 
     return {
-        headerLeft:<Image style={{width:getPixel(10),height:getPixel(20),marginLeft:getPixel(10)}} source={require('../../static/back.png')}></Image>,
-        headerRight:<TouchableOpacity activeOpacity={0.1} onPress={()=>{appState.drawer.openDrawer()}}><View><Text style={{fontSize:16,color:'#5788ff',marginRight:getPixel(20)}}>筛选</Text></View></TouchableOpacity>,
-        title:'业绩目标完成度',
-        headerTitleStyle: {flex:1,textAlign:'center'}
+        header:null,
     }
 }
+
 componentDidMount(){
     appState.fetchAchieveData('https://facebook.github.io/react-native/movies.json')
 }
@@ -45,6 +44,12 @@ componentDidMount(){
             </View>
         )
     }
+    openDrawer=()=>{
+        this.drawer&&this.drawer.openDrawer();
+    }
+    closeDrawer=()=>{
+        this.drawer&&this.drawer.closeDrawer();
+    }
     render(){
         const {achievementData=[],achievementList=[]}=appState.achieveData;
         const amount =achievementList.reduce(function(s,i){return (s+Number(i.amount))},0);
@@ -58,11 +63,13 @@ componentDidMount(){
             
              <Drawer
              sidebar={<SelectData />}
-             drawerRef={el=>appState.setDrawer(el)}
+             open={false}
              position="right"
-             drawerWidth={200}
+             drawerWidth={300}
+             drawerRef={el=>(this.drawer=el)}
              drawerBackgroundColor="rgb(0,0,0,.5)"
-             >   
+             >
+             <Header openDrawer={this.openDrawer} navigation={this.props.navigation} />   
             <ScrollView>
                 <View style={styles.container}>
                     <Bar data={achievementData} />

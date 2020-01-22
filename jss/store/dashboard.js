@@ -5,7 +5,6 @@ import rankingListData from '../data/rankingList'
 
 class AppState {
   @observable selectedIndex=0;
-  @observable drawer=null;
   @observable achieveData= {"achievementData":[    
     {"date":null,"target":null,"achievement":null},      
 ],
@@ -76,10 +75,7 @@ class AppState {
           }).catch(e=>{})  
 }
 
-@action
-setDrawer = (drawer)=>{
-  this.drawer=drawer;
-}
+
   
 }  
 const appState = new AppState()
