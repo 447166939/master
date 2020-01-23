@@ -30,8 +30,14 @@ export default class SelectData extends Component {
             </View>
 
             <View style={styles.label}><Text style={styles.labelTxt}>部门</Text></View>
-            <TouchableOpacity><View style={styles.picker}><Image source={require('../../static/add.png')} style={styles.icon}></Image><Text style={styles.pickTxt}>选择部门</Text></View></TouchableOpacity>
+            <TouchableOpacity style={{marginTop:getPixel(5)}}><View style={styles.picker}><Image source={require('../../static/add.png')} style={styles.icon}></Image><Text style={styles.pickTxt}>选择部门</Text></View></TouchableOpacity>
 
+            <View style={styles.label}><Text style={styles.labelTxt}>人员</Text></View>
+            <View style={styles.contacts}>{appState.members.map((item,index)=>{
+                return (<View key={index} style={styles.contactsItem}><Image style={styles.userImg} source={require('../../static/user.jpeg')}></Image><Text>{item.name}</Text></View>)
+            })}<View style={styles.contactsItem}><Image source={require('../../static/add.png')}></Image><Text>更多</Text></View></View>
+
+            <View style={styles.footer}><Button style={{flex:1,marginRight:getPixel(5)}} size="large">重置</Button><Button type="primary" style={{flex:1}} size="large">确定</Button></View>
 
 
             </View>
@@ -51,12 +57,12 @@ const styles=StyleSheet.create({
         flexDirection:'row',
         justifyContent:'space-between',
         alignItems:'center',
-        backgroundColor:'green'
+        marginBottom:getPixel(5),
     },
     headerTxt: {
         fontSize:18,
         fontWeight:'bold',
-        color:'#cccccc',
+        color:'#333333',
     },
     close:{
         justifyContent:'flex-end',
@@ -73,9 +79,9 @@ const styles=StyleSheet.create({
         alignItems:'center',
     },
     labelTxt: {
-        fontSize:18,
+        fontSize:16,
         fontWeight:'100',
-        color:'#cccccc',
+        color:'#333333',
     },
     btnGroup: {
         flexDirection:'row',
@@ -107,5 +113,29 @@ const styles=StyleSheet.create({
         fontWeight:'100',
         color:'#cccccc',
         marginLeft:getPixel(5)
+    },
+    contacts: {
+        flexDirection:'row',
+        alignItems:'center',
+        justifyContent:'space-evenly',
+        marginTop:getPixel(5)
+    },
+    contactsItem: {
+        width:getPixel(50),
+        height:getPixel(65),
+        justifyContent:'center',
+        alignItems:'center'
+    },
+    userImg: {
+        width:getPixel(50),
+        height:getPixel(50),
+        borderRadius:getPixel(25),
+    },
+    footer: {
+        position:'absolute',
+        bottom:0,
+        flexDirection:'row',
+        left:getPixel(5),
+        right:getPixel(5),
     }
 })

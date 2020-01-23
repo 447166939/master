@@ -2,5 +2,10 @@
     "leixingBtnList": [{"title":"成交金额"},{"title":"回款金额"},{"title":"新增客户"},{"title":"新增商机"},{"title":"跟进次数"}],
     "shijianBtnList": [
         {"title":"2019年"},{"title":"2018年"},{"title":"2017年"},{"title":"2016年"},{"title":"2015年"}
+    ],
+    "member":[
+        {"name":"赵小刚"},
+        {"name":"周小明"},
+        {"name":"郭小涛"}
     ]
 }

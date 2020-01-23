@@ -50,6 +50,9 @@ class AppState {
     ],
     shijianBtnList: [
       {title:''}
+    ],
+    member: [
+      {name:''}
     ]
   }
   
@@ -91,6 +94,10 @@ fetchSelectData = (url) => {
           .then((responseJson) => {
             this.selectData=selectData;
           }).catch(e=>{}) 
+}
+
+@computed get members(){
+  return this.selectData.member.slice(0,3)
 }
 
 
