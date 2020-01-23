@@ -10,6 +10,9 @@ export default class SelectData extends Component {
     componentDidMount(){
         appState.fetchSelectData('https://facebook.github.io/react-native/movies.json')
     }
+    goToSelectDepartment=()=>{
+        this.props.navigation.navigate('SelectDepartment')
+    }
     render(){
         const {leixingBtnList,shijianBtnList}=appState.selectData;
         return (
@@ -30,7 +33,7 @@ export default class SelectData extends Component {
             </View>
 
             <View style={styles.label}><Text style={styles.labelTxt}>部门</Text></View>
-            <TouchableOpacity style={{marginTop:getPixel(5)}}><View style={styles.picker}><Image source={require('../../static/add.png')} style={styles.icon}></Image><Text style={styles.pickTxt}>选择部门</Text></View></TouchableOpacity>
+            <TouchableOpacity onPress={this.goToSelectDepartment} style={{marginTop:getPixel(5)}}><View style={styles.picker}><Image source={require('../../static/add.png')} style={styles.icon}></Image><Text style={styles.pickTxt}>选择部门</Text></View></TouchableOpacity>
 
             <View style={styles.label}><Text style={styles.labelTxt}>人员</Text></View>
             <View style={styles.contacts}>{appState.members.map((item,index)=>{

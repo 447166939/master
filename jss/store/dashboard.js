@@ -3,9 +3,11 @@ import achieveData from '../data/achievementDetail.json';
 import dashboardData from '../data/dashboard';
 import rankingListData from '../data/rankingList'
 import selectData from '../data/selectData.json'
+import selectDepartmentData from '../data/selectDepartment.json'
 
 class AppState {
   @observable selectedIndex=0;
+  @observable drawer=null;
   @observable achieveData= {"achievementData":[    
     {"date":null,"target":null,"achievement":null},      
 ],
@@ -55,6 +57,10 @@ class AppState {
       {name:''}
     ]
   }
+
+  @observable selectDepartmentData={
+    treeData: [{id:'',name:'',parentId:'',children:[]}]
+  }
   
   @action
   handleIndexChange = (index) => {
@@ -87,6 +93,7 @@ class AppState {
             this.rankingListData=rankingListData;
           }).catch(e=>{})  
 }
+
 @action
 fetchSelectData = (url) => {
   fetch(url)
@@ -94,6 +101,29 @@ fetchSelectData = (url) => {
           .then((responseJson) => {
             this.selectData=selectData;
           }).catch(e=>{}) 
+}
+
+
+@action
+fetchSelectDepartmentData = (url) => {
+  fetch(url)
+  .then((response) => response.json())
+          .then((responseJson) => {
+            this.selectDepartmentData=selectDepartmentData;
+          }).catch(e=>{}) 
+}
+
+@action 
+setDrawer = (el)=>{
+  this.drawer=el
+}
+@action
+openDrawer=()=>{
+  this.drawer.openDrawer();
+}
+@action
+closeDrawer=()=>{
+  this.drawer.closeDrawer();
 }
 
 @computed get members(){

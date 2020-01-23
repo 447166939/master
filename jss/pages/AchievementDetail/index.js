@@ -4,7 +4,7 @@ import Bar from './Bar';
 import {getPixel,money} from '../../common/util';
 import {observer } from 'mobx-react';
 import appState from '../../store/dashboard';
-import {Drawer} from '@ant-design/react-native';
+import {Drawer,Provider} from '@ant-design/react-native';
 import SelectData from '../../components/SelectData';
 import Header from './Header';
 
@@ -44,12 +44,7 @@ componentDidMount(){
             </View>
         )
     }
-    openDrawer=()=>{
-        this.drawer&&this.drawer.openDrawer();
-    }
-    closeDrawer=()=>{
-        this.drawer&&this.drawer.closeDrawer();
-    }
+    
     render(){
         const {achievementData=[],achievementList=[]}=appState.achieveData;
         const amount =achievementList.reduce(function(s,i){return (s+Number(i.amount))},0);
@@ -60,16 +55,16 @@ componentDidMount(){
         const scrollTableData=scrollData.reduce(function(s,i){return (s.concat(i))},[])
        
         return (
-            
+            <Provider>
              <Drawer
-             sidebar={<SelectData closeDrawer={this.closeDrawer}/>}
+             sidebar={<SelectData navigation={this.props.navigation} closeDrawer={appState.closeDrawer}/>}
              open={false}
              position="right"
              drawerWidth={300}
-             drawerRef={el=>(this.drawer=el)}
+             drawerRef={appState.setDrawer}
              drawerBackgroundColor="rgb(0,0,0,.5)"
              >
-             <Header openDrawer={this.openDrawer} navigation={this.props.navigation} />   
+             <Header openDrawer={appState.openDrawer} navigation={this.props.navigation} />   
             <ScrollView>
                 <View style={styles.container}>
                     <Bar data={achievementData} />
@@ -108,6 +103,7 @@ componentDidMount(){
                 </View>
             </ScrollView>
             </Drawer>
+            </Provider>
         )
     }
 }

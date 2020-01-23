@@ -1,0 +1,13 @@
+{
+    "treeData": [
+        {
+        "id":"department",
+        "name":"全部部门",
+        "parentId":"0",
+        "children": [
+            {"id":"nandian","name":"南店","parentId":"department"},
+            {"id":"beidian","name":"北店","parentId":"department"}
+        ]
+    }
+]
+}
