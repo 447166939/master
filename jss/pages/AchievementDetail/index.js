@@ -62,7 +62,7 @@ componentDidMount(){
         return (
             
              <Drawer
-             sidebar={<SelectData />}
+             sidebar={<SelectData closeDrawer={this.closeDrawer}/>}
              open={false}
              position="right"
              drawerWidth={300}

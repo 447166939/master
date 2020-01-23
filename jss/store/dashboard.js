@@ -2,6 +2,7 @@ import { observable, action, computed, autorun, ObservableMap } from 'mobx'
 import achieveData from '../data/achievementDetail.json';
 import dashboardData from '../data/dashboard';
 import rankingListData from '../data/rankingList'
+import selectData from '../data/selectData.json'
 
 class AppState {
   @observable selectedIndex=0;
@@ -42,6 +43,15 @@ class AppState {
       {"order":null,"department":null,"target":null,"amount":null,"completeRate":null,"amountRate":null},
     ]
   }
+
+  @observable selectData={
+    leixingBtnList: [
+      {title:''}
+    ],
+    shijianBtnList: [
+      {title:''}
+    ]
+  }
   
   @action
   handleIndexChange = (index) => {
@@ -73,6 +83,14 @@ class AppState {
           .then((responseJson) => {
             this.rankingListData=rankingListData;
           }).catch(e=>{})  
+}
+@action
+fetchSelectData = (url) => {
+  fetch(url)
+  .then((response) => response.json())
+          .then((responseJson) => {
+            this.selectData=selectData;
+          }).catch(e=>{}) 
 }
 
 

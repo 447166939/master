@@ -10,7 +10,7 @@ class Header extends Component {
         return (
             <View style={styles.container}>
                 <TouchableOpacity activeOpacity={0.1} onPress={this.handleBack} style={{flex:1,justifyContent:'flex-start',alignItems:'center',flexDirection:'row'}}><View><Image style={[styles.icon,{marginLeft:getPixel(10)}]} source={require('../../static/back.png')}></Image></View></TouchableOpacity>
-                <View style={{flex:2,justifyContent:'center',alignItems:'center'}}><Text style={{fontSize:18,fontWeight:'bold',color:'#333333'}}>业绩目标完成度</Text></View>
+                <View style={{flex:2,justifyContent:'flex-start',alignItems:'center'}}><Text style={{fontSize:18,fontWeight:'bold',color:'#333333'}}>业绩目标完成度</Text></View>
                 <TouchableOpacity  activeOpacity={0.1} style={{flex:1,flexDirection:'row',justifyContent:'flex-end',alignItems:'center'}} onPress={this.props.openDrawer}><View style={{flexDirection:'row',alignItems:'center',justifyContent:'flex-end',marginRight:getPixel(20)}}><Image style={styles.icon} source={require('../../static/search1x.png')}></Image><Text style={{color:'#5788ff',fontSize:16}}>筛选</Text></View></TouchableOpacity>
             </View>
         )

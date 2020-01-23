@@ -1,22 +1,111 @@
 import React,{Component} from 'react';
-import {StyleSheet,View,Text,Dimensions} from 'react-native';
-
+import {StyleSheet,View,Text,Dimensions,Image,TouchableOpacity} from 'react-native';
+import {getPixel} from '../../common/util'
+import {Button} from '@ant-design/react-native';
+import {observer} from 'mobx-react';
+import appState from '../../store/dashboard'
 const {height}=Dimensions.get('window')
-class SelectData extends Component {
+@observer
+export default class SelectData extends Component {
+    componentDidMount(){
+        appState.fetchSelectData('https://facebook.github.io/react-native/movies.json')
+    }
     render(){
+        const {leixingBtnList,shijianBtnList}=appState.selectData;
         return (
-            <View style={styles.container}><Text>hello world</Text></View>
+            <View style={styles.container}>
+            <View style={styles.header}><Text style={styles.headerTxt}>数据筛选</Text><TouchableOpacity activeOpacity={0.1} style={styles.close} onPress={this.props.closeDrawer}><Image style={styles.closeIcon} source={require('../../static/close.png')}></Image></TouchableOpacity></View>
+            <View style={styles.label}><Text style={styles.labelTxt}>类型</Text></View>
+            <View style={styles.btnGroup}>
+            {leixingBtnList.map((item,index)=>(
+                <Button style={styles.btn}  key={index}  size="small">{item.title}</Button>
+            ))}
+            </View>
+
+            <View style={styles.label}><Text style={styles.labelTxt}>时间</Text></View>
+            <View style={styles.btnGroup}>
+            {shijianBtnList.map((item,index)=>(
+                <Button style={styles.btn}  key={index}  size="small">{item.title}</Button>
+            ))}
+            </View>
+
+            <View style={styles.label}><Text style={styles.labelTxt}>部门</Text></View>
+            <TouchableOpacity><View style={styles.picker}><Image source={require('../../static/add.png')} style={styles.icon}></Image><Text style={styles.pickTxt}>选择部门</Text></View></TouchableOpacity>
+
+
+
+            </View>
         )
     }
 }
-export default SelectData;
+
 const styles=StyleSheet.create({
     container: {
         marginRight:0,
         height,
         flex:1,
-        flexDirection:'column-reverse',
-        backgroundColor:'#fff'
-        
+        backgroundColor:'#fff',
+        paddingHorizontal:getPixel(10),        
+    },
+    header: {
+        flexDirection:'row',
+        justifyContent:'space-between',
+        alignItems:'center',
+        backgroundColor:'green'
+    },
+    headerTxt: {
+        fontSize:18,
+        fontWeight:'bold',
+        color:'#cccccc',
+    },
+    close:{
+        justifyContent:'flex-end',
+        alignItems:'center',
+        flexDirection:'row'
+    },
+    closeIcon: {
+        width:getPixel(20),
+        height:getPixel(20),
+    },
+    label: {
+        flexDirection:'row',
+        justifyContent:'flex-start',
+        alignItems:'center',
+    },
+    labelTxt: {
+        fontSize:18,
+        fontWeight:'100',
+        color:'#cccccc',
+    },
+    btnGroup: {
+        flexDirection:'row',
+        flexWrap:'wrap',
+        justifyContent:'flex-start',
+        alignItems: 'center',
+    },
+    btn: {
+        width:getPixel(75),
+        height:getPixel(30),
+        marginBottom:getPixel(10),
+        marginRight:getPixel(10),
+    },
+    picker: {
+        flexDirection:'row',
+        justifyContent:'flex-start',
+        alignItems:'center',
+        borderWidth:1,
+        borderColor:'#cccccc',
+        marginBottom: getPixel(10),
+    },
+    icon:{
+        width:getPixel(30),
+        height:getPixel(30),
+        marginLeft:getPixel(5),
+    },
+    pickTxt: {
+        fontSize:14,
+        fontWeight:'100',
+        color:'#cccccc',
+        marginLeft:getPixel(5)
     }
 })
