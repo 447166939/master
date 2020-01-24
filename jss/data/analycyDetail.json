@@ -7,6 +7,34 @@
             "inversionRate":"10%",
             "saleMoney": 1000000,
             "probability":900000
+        },
+        {
+            "level":"深入沟通",
+            "chanceNo":1000,
+            "inversionRate":"10%",
+            "saleMoney":1000000,
+            "probability":900000
+        },
+        {
+            "level":"产品报价",
+            "chanceNo":1000,
+            "inversionRate":"10%",
+            "saleMoney":1000000,
+            "probability":900000
+        },
+        {
+            "level":"成交商机",
+            "chanceNo":1000,
+            "inversionRate":"10%",
+            "saleMoney":1000000,
+            "probability":900000
+        },
+        {
+            "level":"流失商机",
+            "chanceNo":1000,
+            "inversionRate":"10%",
+            "saleMoney":1000000,
+            "probability":900000
         }
     ]
 }

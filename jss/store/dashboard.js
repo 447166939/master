@@ -4,7 +4,7 @@ import dashboardData from '../data/dashboard';
 import rankingListData from '../data/rankingList'
 import selectData from '../data/selectData.json'
 import selectDepartmentData from '../data/selectDepartment.json'
-
+import analycyDetailData from '../data/analycyDetail.json'
 class AppState {
   @observable selectedIndex=0;
   @observable drawer=null;
@@ -61,6 +61,18 @@ class AppState {
   @observable selectDepartmentData={
     treeData: [{id:'',name:'',parentId:'',children:[]}]
   }
+
+  @observable analycyDetailData= {
+    data: [
+      {
+        level: '',
+        chanceNo: null,
+        inversionRate:'',
+        saleMoney: null,
+        probability:null,
+    }
+    ]
+  }
   
   @action
   handleIndexChange = (index) => {
@@ -110,6 +122,15 @@ fetchSelectDepartmentData = (url) => {
   .then((response) => response.json())
           .then((responseJson) => {
             this.selectDepartmentData=selectDepartmentData;
+          }).catch(e=>{}) 
+}
+
+@action
+fetchAnalycyDetailData = (url) => {
+  fetch(url)
+  .then((response) => response.json())
+          .then((responseJson) => {
+            this.analycyDetailData=analycyDetailData;
           }).catch(e=>{}) 
 }
 
