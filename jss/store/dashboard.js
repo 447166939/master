@@ -8,6 +8,7 @@ import analycyDetailData from '../data/analycyDetail.json'
 class AppState {
   @observable selectedIndex=0;
   @observable drawer=null;
+  @observable analycyDrawer=null;
   @observable achieveData= {"achievementData":[    
     {"date":null,"target":null,"achievement":null},      
 ],
@@ -145,6 +146,19 @@ openDrawer=()=>{
 @action
 closeDrawer=()=>{
   this.drawer.closeDrawer();
+}
+
+@action
+setAnalycyDrawer=(el)=>{
+  this.analycyDrawer=el;
+}
+@action
+openAnalycyDrawer=()=>{
+  this.analycyDrawer.openDrawer()
+}
+@action
+closeAnalycyDrawer=()=>{
+  this.analycyDrawer.closeDrawer();
 }
 
 @computed get members(){

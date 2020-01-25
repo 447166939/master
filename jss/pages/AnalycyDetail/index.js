@@ -4,9 +4,15 @@ import Chart from './Chart';
 import {observer} from 'mobx-react';
 import appState from '../../store/dashboard'
 import {money,getPixel} from '../../common/util'
+import {Drawer,Provider} from '@ant-design/react-native';
+import AnalycyDrawer from './AnalycyDrawer';
+import Header from './Header';
 
 @observer
 export default class AnalycyDetail extends Component {
+    static navigationOptions={
+        header:null
+    }
     componentDidMount(){
         appState.fetchAnalycyDetailData('https://facebook.github.io/react-native/movies.json')
     }
@@ -42,49 +48,64 @@ export default class AnalycyDetail extends Component {
         const chanceNo=data.reduce((s,i)=>(s+i.chanceNo),0)
         const saleMoney=data.reduce((s,i)=>(s+i.saleMoney),0);
         const probability=data.reduce((s,i)=>(s+i.probability),0)
-        const level=data.map((item,index)=>(item.level))
+        let level=data.map((item,index)=>(item.level))
+        level=level.concat(['总计'])
         const scrollData=data.map((item,index)=>[`${item.chanceNo}`,`${item.inversionRate}`,`￥${money(item.saleMoney,2)}`,`￥${item.probability}`])
-        const scrollTableData=scrollData.reduce(function(s,i){return (s.concat(i))},[])
+        let scrollTableData=scrollData.reduce(function(s,i){return (s.concat(i))},[])
+        scrollTableData=scrollTableData.concat([chanceNo,'-',`￥${money(saleMoney,2)}`,`￥${money(probability,2)}`]);
 
         return (
-            <ScrollView>
-                <View style={styles.container}>
-                    <Chart navigation={this.props.navigation} data={chartData} title="销售漏斗" />
-                    <View style={styles.middleTable}>
-                        <View style={styles.col}>
-                            <Text style={{ color: '#666666', fontWeight: '100', fontSize: 14, marginBottom: getPixel(5) }}>商机数量</Text><Text style={{ color: '#333333', fontSize: 16, fontWeight: 'bold', marginTop: getPixel(5) }}>{chanceNo}</Text>
+            <Provider>
+                <Drawer
+             sidebar={<AnalycyDrawer navigation={this.props.navigation} closeDrawer={appState.closeAnalycyDrawer}/>}
+             open={false}
+             position="right"
+             drawerWidth={300}
+             drawerRef={appState.setAnalycyDrawer}
+             drawerBackgroundColor="rgb(0,0,0,.5)"
+             >
+             <Header openDrawer={appState.openAnalycyDrawer} navigation={this.props.navigation} /> 
+                
+                <ScrollView>
+                    <View style={styles.container}>
+                        <Chart navigation={this.props.navigation} data={chartData} title="销售漏斗" />
+                        <View style={styles.middleTable}>
+                            <View style={styles.col}>
+                                <Text style={{ color: '#666666', fontWeight: '100', fontSize: 14, marginBottom: getPixel(5) }}>商机数量</Text><Text style={{ color: '#333333', fontSize: 16, fontWeight: 'bold', marginTop: getPixel(5) }}>{chanceNo}</Text>
+                            </View>
+                            <View style={styles.col}>
+                                <Text style={{ color: '#666666', fontWeight: '100', fontSize: 14, marginBottom: getPixel(5) }}>预计销售金额</Text><Text style={{ color: '#333333', fontSize: 16, fontWeight: 'bold', marginTop: getPixel(5) }}>{`￥${money(saleMoney, 2)}`}</Text>
+                            </View>
+                            <View style={styles.col}>
+                                <Text style={{ color: '#666666', fontWeight: '100', fontSize: 14, marginBottom: getPixel(5) }}>概率金额</Text><Text style={{ color: '#333333', fontSize: 16, fontWeight: 'bold', marginTop: getPixel(5) }}>{`￥${money(probability, 2)}`}</Text>
+                            </View>
                         </View>
-                        <View style={styles.col}>
-                            <Text style={{ color: '#666666', fontWeight: '100', fontSize: 14, marginBottom: getPixel(5) }}>预计销售金额</Text><Text style={{ color: '#333333', fontSize: 16, fontWeight: 'bold', marginTop: getPixel(5) }}>{`￥${money(saleMoney,2)}`}</Text>
+                        <View style={styles.downTable}>
+                            <View style={styles.fixedTable}>
+                                <FlatList
+                                    keyExtractor={(item, index) => ('#' + index)}
+                                    data={level}
+                                    renderItem={this.renderLevelItem}
+                                    ListHeaderComponent={this.headerComponent}
+                                    ItemSeparatorComponent={this.separatorComponent}
+                                />
+                            </View>
+                            <ScrollView style={styles.scrollTable} horizontal={true}>
+                                <FlatList
+                                    keyExtractor={(item, index) => ('#' + index)}
+                                    data={scrollTableData}
+                                    numColumns={4}
+                                    ListHeaderComponent={this.scrollHeaderComponent}
+                                    ItemSeparatorComponent={this.separatorComponent}
+                                    renderItem={this.renderScrollTable}
+                                />
+                            </ScrollView>
                         </View>
-                        <View style={styles.col}>
-                            <Text style={{ color: '#666666', fontWeight: '100', fontSize: 14, marginBottom: getPixel(5) }}>概率金额</Text><Text style={{ color: '#333333', fontSize: 16, fontWeight: 'bold', marginTop: getPixel(5) }}>{`￥${money(probability,2)}`}</Text>
-                        </View>
-                    </View>
-                    <View style={styles.downTable}>
-                        <View style={styles.fixedTable}>
-                            <FlatList
-                                keyExtractor={(item, index) => ('#' + index)}
-                                data={level}
-                                renderItem={this.renderLevelItem}
-                                ListHeaderComponent={this.headerComponent}
-                                ItemSeparatorComponent={this.separatorComponent}
-                            />
-                        </View>
-                        <ScrollView style={styles.scrollTable} horizontal={true}>
-                            <FlatList
-                                keyExtractor={(item, index) => ('#' + index)}
-                                data={scrollTableData}
-                                numColumns={4}
-                                ListHeaderComponent={this.scrollHeaderComponent}
-                                ItemSeparatorComponent={this.separatorComponent}
-                                renderItem={this.renderScrollTable}
-                            />
-                        </ScrollView>
-                    </View>
 
-                </View>
-            </ScrollView>
+                    </View>
+                </ScrollView>
+                </Drawer>
+            </Provider>
         )
     }
 }

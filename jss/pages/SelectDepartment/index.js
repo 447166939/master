@@ -16,7 +16,7 @@ export default class SelectDepartment extends Component {
     _onClick=()=>{}
     _onClickLeaf=()=>{}
     goback=()=>{
-        appState.closeDrawer();        
+                
         this.props.navigation.goBack();
     } 
     render(){

@@ -6,32 +6,33 @@ import {observer} from 'mobx-react';
 import appState from '../../store/dashboard'
 const {height}=Dimensions.get('window')
 @observer
-export default class SelectData extends Component {
+export default class AnalycyDrawer extends Component {
     componentDidMount(){
         appState.fetchSelectData('https://facebook.github.io/react-native/movies.json')
     }
+    goToCalendar=()=>{
+        this.props.navigation.navigate('AnalycyCalendar')
+    }
     goToSelectDepartment=()=>{
-        appState.closeDrawer()
+        appState.closeAnalycyDrawer();
         this.props.navigation.navigate('SelectDepartment')
     }
     render(){
-        const {leixingBtnList,shijianBtnList}=appState.selectData;
+        const shijianBtnList=[{title:'近一个月'},{title:'近3个月'},{title:'近半年'}]
         return (
             <View style={styles.container}>
             <View style={styles.header}><Text style={styles.headerTxt}>数据筛选</Text><TouchableOpacity activeOpacity={0.1} style={styles.close} onPress={this.props.closeDrawer}><Image style={styles.closeIcon} source={require('../../static/close.png')}></Image></TouchableOpacity></View>
-            <View style={styles.label}><Text style={styles.labelTxt}>类型</Text></View>
-            <View style={styles.btnGroup}>
-            {leixingBtnList.map((item,index)=>(
-                <Button style={styles.btn}  key={index}  size="small">{item.title}</Button>
-            ))}
-            </View>
-
             <View style={styles.label}><Text style={styles.labelTxt}>时间</Text></View>
             <View style={styles.btnGroup}>
             {shijianBtnList.map((item,index)=>(
                 <Button style={styles.btn}  key={index}  size="small">{item.title}</Button>
             ))}
             </View>
+
+            
+
+            <View style={styles.label}><Text style={styles.labelTxt}>自定义时间段</Text></View>
+            <TouchableOpacity onPress={this.goToCalendar} style={{marginTop:getPixel(5)}}><View style={styles.picker}><Image source={require('../../static/add.png')} style={styles.icon}></Image><Text style={styles.pickTxt}>选择时间范围</Text></View></TouchableOpacity>
 
             <View style={styles.label}><Text style={styles.labelTxt}>部门</Text></View>
             <TouchableOpacity onPress={this.goToSelectDepartment} style={{marginTop:getPixel(5)}}><View style={styles.picker}><Image source={require('../../static/add.png')} style={styles.icon}></Image><Text style={styles.pickTxt}>选择部门</Text></View></TouchableOpacity>
@@ -81,6 +82,7 @@ const styles=StyleSheet.create({
         flexDirection:'row',
         justifyContent:'flex-start',
         alignItems:'center',
+        marginBottom:getPixel(5)
     },
     labelTxt: {
         fontSize:16,
