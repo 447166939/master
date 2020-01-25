@@ -14,6 +14,10 @@ export default class SelectData extends Component {
         appState.closeDrawer()
         this.props.navigation.navigate('SelectDepartment')
     }
+    goToMore=()=>{
+        appState.closeDrawer();
+        this.props.navigation.navigate('More');
+    }
     render(){
         const {leixingBtnList,shijianBtnList}=appState.selectData;
         return (
@@ -39,7 +43,7 @@ export default class SelectData extends Component {
             <View style={styles.label}><Text style={styles.labelTxt}>人员</Text></View>
             <View style={styles.contacts}>{appState.members.map((item,index)=>{
                 return (<View key={index} style={styles.contactsItem}><Image style={styles.userImg} source={require('../../static/user.jpeg')}></Image><Text>{item.name}</Text></View>)
-            })}<View style={styles.contactsItem}><Image source={require('../../static/add.png')}></Image><Text>更多</Text></View></View>
+            })}<TouchableOpacity activeOpacity={0.1} onPress={this.goToMore}><View style={styles.contactsItem}><Image source={require('../../static/add.png')}></Image><Text>更多</Text></View></TouchableOpacity></View>
 
             <View style={styles.footer}><Button style={{flex:1,marginRight:getPixel(5)}} size="large">重置</Button><Button type="primary" style={{flex:1}} size="large">确定</Button></View>
 

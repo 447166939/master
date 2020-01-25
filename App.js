@@ -19,6 +19,7 @@ import RankingList from './jss/pages/RankingList'
 import SelectDepartment from './jss/pages/SelectDepartment'
 import AnalycyDetail from './jss/pages/AnalycyDetail';
 import CalendarPage from './jss/pages/AnalycyDetail/Calendar'
+import More from './jss/pages/More';
 LocaleConfig.locales['fr'] = {
   monthNames: [
     '一月',
@@ -177,6 +178,9 @@ const ScheduleTotal = StackNavigator({
   },
   AnalycyCalendar: {
     screen: CalendarPage
+  },
+  More: {
+    screen: More
   }
 })
 // var image_icon = './jss/static/notselected2x.png'
