@@ -9,6 +9,7 @@ class AppState {
   @observable selectedIndex=0;
   @observable drawer=null;
   @observable analycyDrawer=null;
+  @observable rankingListDrawer=null;
   @observable achieveData= {"achievementData":[    
     {"date":null,"target":null,"achievement":null},      
 ],
@@ -159,6 +160,19 @@ openAnalycyDrawer=()=>{
 @action
 closeAnalycyDrawer=()=>{
   this.analycyDrawer.closeDrawer();
+}
+
+@action
+setRankingListDrawer=(el)=>{
+  this.rankingListDrawer=el;
+}
+@action
+openRankingListDrawer=()=>{
+  this.rankingListDrawer.openDrawer();
+}
+@action
+closeRankingListDrawer=()=>{
+  this.rankingListDrawer.closeDrawer();
 }
 
 @computed get members(){

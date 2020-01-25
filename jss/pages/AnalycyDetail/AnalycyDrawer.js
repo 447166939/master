@@ -139,7 +139,7 @@ const styles=StyleSheet.create({
     },
     footer: {
         position:'absolute',
-        bottom:0,
+        bottom:getPixel(5),
         flexDirection:'row',
         left:getPixel(5),
         right:getPixel(5),
